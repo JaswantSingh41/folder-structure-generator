@@ -1,81 +1,4 @@
-// import inquirer from 'inquirer';
-// import fs from 'fs';
-// import path from 'path';
-// import { GoogleGenerativeAI } from "@google/generative-ai";
-// import dotenv from 'dotenv';
-// import { writeFileSync } from 'fs';
-// import { fileURLToPath } from 'url';
-// import { dirname } from 'path';
 
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = dirname(__filename);
-
-// dotenv.config();
-
-// const genAI = new GoogleGenerativeAI(process.env.API_KEY);
-
-// const askQuestions = async () => {
-//   const questions = [
-//     {
-//       type: 'input',
-//       name: 'projectIdea',
-//       message: 'What is your project idea?',
-//     },
-//     {
-//       type: 'input',
-//       name: 'techStack',
-//       message: 'What is the tech stack?',
-//     },
-//   ];
-//   return inquirer.prompt(questions);
-// };
-
-// const getGoogleGenerativeAIResponse = async (prompt) => {
-//   const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-//   const result = await model.generateContentStream([prompt]);
-//   let response = '';
-//   for await (const chunk of result.stream) {
-//     response += chunk.text();
-//   }
-//   return response;
-// };
-
-// const main = async () => {
-//   const answers = await askQuestions();
-//   const prompt = `Generate a directory structure for a project with the following details:
-//   Project Idea: ${answers.projectIdea}
-//   Tech Stack: ${answers.techStack}`;
-  
-//   const directoryStructure = await getGoogleGenerativeAIResponse(prompt);
-//   console.log('Proposed Directory Structure:\n', directoryStructure);
-
-//   const { confirmStructure } = await inquirer.prompt({
-//     type: 'confirm',
-//     name: 'confirmStructure',
-//     message: 'Are you okay with this directory structure?',
-//   });
-
-//   if (confirmStructure) {
-//     const codePrompt = `genrate a code so that i can run that code i because i don't want to create this:\n${directoryStructure} files one by one in ES module and without commented`;
-//     const creationCode = await getGoogleGenerativeAIResponse(codePrompt);
-//     console.log('Directory Creation Code:\n', creationCode);
-
-//     const { confirmCode } = await inquirer.prompt({
-//       type: 'confirm',
-//       name: 'confirmCode',
-//       message: 'Do you want to execute this code to create the directory structure?',
-//     });
-
-//     if (confirmCode) {
-//       const scriptPath = path.join(__dirname, 'code.js');
-//       fs.writeFileSync(scriptPath, creationCode);
-
-//       console.log(`The code has been saved to ${scriptPath}. You can run it using 'node createStructure.js'`);
-//     }
-//   }
-// };
-
-// main();
 import inquirer from 'inquirer';
 import fs from 'fs';
 import path from 'path';
@@ -206,4 +129,4 @@ const main = async () => {
   }
 };
 
-main();
+export default main;
